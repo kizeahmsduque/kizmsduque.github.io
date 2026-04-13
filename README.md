@@ -7,7 +7,7 @@
 ---
 
 ## 🌐 Portfolio
-👉 https://kizeahmsduque.github.io/kizeah-portfolio/
+👉 https://kizmsduque.github.io/kizeah-portfolio/
 
 ---
 
