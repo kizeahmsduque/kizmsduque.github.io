@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kizeah Duque | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #020617, #0f172a);
+    color: #e2e8f0;
+    scroll-behavior: smooth;
+}
+
+/* NAVBAR */
+nav {
+    position: fixed;
+    width: 100%;
+    padding: 15px 10%;
+    display: flex;
+    justify-content: space-between;
+    background: rgba(15,23,42,0.7);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+nav a {
+    color: #e2e8f0;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+/* HERO */
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10%;
+}
+
+h1 { font-size: 3rem; }
+.highlight { color: #38bdf8; }
+.typing { color: #38bdf8; }
+
+.btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: #38bdf8;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* SECTIONS */
+section {
+    padding: 100px 10%;
+}
+
+/* GLASS CARD */
+.glass {
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+}
+
+/* PROJECTS */
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 15px;
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+/* SKILLS */
+.skills span {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    background: #38bdf8;
+    color: black;
+    border-radius: 8px;
+}
+
+/* TIMELINE */
+.timeline {
+    border-left: 2px solid #38bdf8;
+    padding-left: 20px;
+}
+
+.timeline-item {
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.5s;
+}
+
+.timeline-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <b>Kizeah</b>
+    <div>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<header>
+    <h1>Hi, I'm <span class="highlight">Kizeah Duque</span></h1>
+    <h2>I am a <span class="typing"></span></h2>
+    <p>IT student passionate about building modern applications.</p>
+    <button class="btn" onclick="scrollToSection()">View Work</button>
+</header>
+
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+        <div class="card">
+            <h3>Student Management System</h3>
+            <p>C# + MySQL system.</p>
+        </div>
+    </div>
+</section>
+
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>C#</span>
+        <span>MySQL</span>
+    </div>
+</section>
+
+<section id="education">
+    <h2>Education</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <h3>BS Information Technology</h3>
+            <p>Ateneo de Davao University</p>
+            <small>2024 – 2026</small>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Senior High School</h3>
+            <p>Ateneo de Davao University</p>
+            <small>2023</small>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Junior High School</h3>
+            <p>San Pedro College</p>
+            <small>2021</small>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <p>Email: kizmsduque@addu.edu.ph</p>
+    <p>GitHub: github.com/kizeahmsduque</p>
+</section>
+
+<footer>
+    <p>© 2026 Kizeah Duque</p>
+</footer>
+
+<script>
+function scrollToSection() {
+    document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
+}
+
+/* TYPING */
+const roles = ["Web Developer", "IT Student", "Future Software Engineer"];
+let i = 0, j = 0, current = "", isDeleting = false;
+
+function type() {
+    current = roles[i];
+    j = isDeleting ? j - 1 : j + 1;
+
+    document.querySelector(".typing").textContent = current.substring(0, j);
+
+    if (!isDeleting && j === current.length) {
+        isDeleting = true;
+        setTimeout(type, 1000);
+        return;
+    }
+
+    if (isDeleting && j === 0) {
+        isDeleting = false;
+        i = (i + 1) % roles.length;
+    }
+
+    setTimeout(type, isDeleting ? 50 : 100);
+}
+type();
+
+/* SCROLL ANIMATION */
+const items = document.querySelectorAll('.timeline-item');
+
+window.addEventListener('scroll', () => {
+    items.forEach(item => {
+        if (item.getBoundingClientRect().top < window.innerHeight * 0.85) {
+            item.classList.add('show');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
