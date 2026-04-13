@@ -7,7 +7,7 @@
 ---
 
 ## 🌐 Portfolio
-👉 https://yourusername.github.io/kizeah-portfolio/
+👉 https://kizeahmsduque.github.io/kizeah-portfolio/
 
 ---
 
